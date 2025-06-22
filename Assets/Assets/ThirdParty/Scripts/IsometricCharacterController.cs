@@ -319,8 +319,22 @@ public class IsometricCharacterController : MonoBehaviour
         velocity.y = Mathf.Clamp(velocity.y, -terminalVelocity, terminalVelocity);
 
         controller.Move(velocity * Time.deltaTime);
+
+
+
+        if (playerInputActions.Player.Pause.WasPressedThisFrame())
+        {
+            SpawnMenu();
+        }
+        
     }
 
+
+    public GameObject menuObj;
+    void SpawnMenu()
+    {
+        Instantiate(menuObj, transform.position, Quaternion.identity);
+    }
     // Test is the targetDir is pointing either on the left or right side of a transform relative to its forward.
     float angleDir(Vector3 fwd, Vector3 targetDir, Vector3 up)
     {
